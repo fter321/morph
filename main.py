@@ -4,10 +4,12 @@ import sys
 SIZE = WIDTH, HEIGHT = 640, 480
 speed_x, speed_y = 5, 5
 BLACK = (0, 0, 0)
+FPS = 120
 
 pg.init()
 pg.display.set_caption('Ball')
 screen = pg.display.set_mode(SIZE)
+clock = pg.time.Clock()
 
 ball = pg.image.load('ball.png')
 ball_rect = ball.get_rect()
@@ -28,3 +30,5 @@ while True:
     screen.fill(BLACK)
     screen.blit(ball, ball_rect)
     pg.display.update()
+    clock.tick(FPS)
+    pg.display.set_caption(f'Ball  FPS: {int(clock.get_fps())}')
